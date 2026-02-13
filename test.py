@@ -51,7 +51,7 @@ pm25 = PM25_UART(uart, reset_pin)
 
 print("Found PM2.5 sensor, reading data...")
 
-f = open('data/weather.txt', 'w', newline=None)
+f = open('data/aq.csv', 'w', newline=None)
 csvwriter = csv.writer(f, delimiter=',')
 csvwriter.writerow(['Time','0.3','0.5','1.0','2.5','5.0','10'])
 
