@@ -66,7 +66,7 @@ while run_t <= 10:
         print("Unable to read from sensor, retrying...")
         continue
 
-    csvwriter.writerow([time.localtime(),aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"]])
+    csvwriter.writerow([time.time(),aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"]])
 
     print()
     print(f"\nTime: {time.strftime(fmt, time.localtime())}")
@@ -92,3 +92,5 @@ while run_t <= 10:
     print("---------------------------------------")
 
     run_t += 1
+
+f.close()
