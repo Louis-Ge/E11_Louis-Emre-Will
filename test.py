@@ -47,7 +47,8 @@ pm25 = PM25_UART(uart, reset_pin)
 
 print("Found PM2.5 sensor, reading data...")
 
-while True:
+run_t = 0
+while run_t <= 10:
     time.sleep(1)
 
     try:
@@ -58,6 +59,7 @@ while True:
         continue
 
     print()
+    print(f"\nTime: {time.strftime(fmt, time.localtime())}")
     print("Concentration Units (standard)")
     print("---------------------------------------")
     print(
@@ -78,3 +80,5 @@ while True:
     print("Particles > 5.0um / 0.1L air:", aqdata["particles 50um"])
     print("Particles > 10 um / 0.1L air:", aqdata["particles 100um"])
     print("---------------------------------------")
+
+    run_t += 1
