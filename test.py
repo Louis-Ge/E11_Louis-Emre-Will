@@ -13,6 +13,8 @@ from digitalio import DigitalInOut, Direction, Pull
 
 from adafruit_pm25.i2c import PM25_I2C
 
+import csv
+
 fmt = "%H:%M:%S"
 
 reset_pin = None
@@ -49,6 +51,10 @@ pm25 = PM25_UART(uart, reset_pin)
 
 print("Found PM2.5 sensor, reading data...")
 
+f = open('weather.txt', 'w', newline=None)
+csvwriter = csv.writer(f, delimiter=',')
+csvwriter.writerow(['Time','0.3','0.5','1.0','2.5','5.0','10'])
+
 run_t = 0
 while run_t <= 10:
     time.sleep(1)
@@ -59,6 +65,8 @@ while run_t <= 10:
     except RuntimeError:
         print("Unable to read from sensor, retrying...")
         continue
+
+    csvwriter.writerow([time.localtime(),aqdata["particles 03um"],aqdata["particles 05um"],aqdata["particles 10um"],aqdata["particles 25um"],aqdata["particles 50um"],aqdata["particles 100um"]])
 
     print()
     print(f"\nTime: {time.strftime(fmt, time.localtime())}")
