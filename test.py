@@ -13,6 +13,8 @@ from digitalio import DigitalInOut, Direction, Pull
 
 from adafruit_pm25.i2c import PM25_I2C
 
+fmt = "%H:%M:%S"
+
 reset_pin = None
 # If you have a GPIO, its not a bad idea to connect it to the RESET pin
 # reset_pin = DigitalInOut(board.G0)
