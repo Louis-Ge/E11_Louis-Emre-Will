@@ -17,6 +17,10 @@ import adafruit_bme680
 
 import csv
 
+import sys
+
+args = sys.argv
+
 fmt = "%H:%M:%S"
 
 reset_pin = None
@@ -66,7 +70,7 @@ temperature_offset = -5
 
 print("Found PM2.5 sensor, reading data...")
 
-f = open('data/aq_temp.csv', 'w', newline=None)
+f = open(args[1], 'w', newline=None)
 csvwriter = csv.writer(f, delimiter=',')
 csvwriter.writerow(['Time','0.3','0.5','1.0','2.5','5.0','10','Temperature','Pressure','Humidity'])
 
