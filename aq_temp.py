@@ -75,6 +75,9 @@ csvwriter = csv.writer(f, delimiter=',')
 csvwriter.writerow(['Time','0.3','0.5','1.0','2.5','5.0','10','Temperature','Pressure','Humidity'])
 
 usertime = int(input('How long would you like to take measurements?\n'))
+delay = int(input('Any delay?\n'))
+time.sleep(delay)
+
 t = 1
 
 while t <= usertime:
